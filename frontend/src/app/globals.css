@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-white;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  
+  .cyber-border {
+    border: 1px solid theme('colors.cyber.accent');
+    box-shadow: 0 0 10px theme('colors.cyber.accent');
+  }
+  
+  .cyber-card {
+    @apply bg-cyber-card border border-cyber-accent/30 rounded-lg p-6;
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.1);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.cyber.bg');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.cyber.accent');
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.cyber.pink');
+}

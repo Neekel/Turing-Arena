@@ -1,0 +1,25 @@
+{
+  "name": "@turing-arena/backend",
+  "version": "1.0.0",
+  "description": "Backend API and AI agents for TuringArena",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "agents": "node src/agents/runner.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ws": "^8.17.0",
+    "groq-sdk": "^0.5.0",
+    "ethers": "^6.12.0",
+    "axios": "^1.7.2",
+    "@supabase/supabase-js": "^2.43.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

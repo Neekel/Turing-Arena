@@ -1,0 +1,9 @@
+{
+  "network": "mantleTestnet",
+  "chainId": 5003,
+  "agentRegistry": "0x2442EB032404c81e2B869B375FeF904C8DBF0634",
+  "votingPool": "0x444A930d5fdc9c33faeC0D5Dfb84cF1Dc0A05B1D",
+  "turingArena": "0x4320C22491fAC70BfAfFa869eaDC5CD86174A3B1",
+  "deployer": "0x15Ec03bC350D0b37bBEcFc5B4b22907f1A5A47c1",
+  "deployedAt": "2026-05-02T18:12:19.896Z"
+}

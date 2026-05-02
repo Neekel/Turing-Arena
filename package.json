@@ -1,0 +1,21 @@
+{
+  "name": "turing-arena",
+  "version": "1.0.0",
+  "description": "Gamified Human vs AI Trading Benchmark on Mantle",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "contracts"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build": "npm run build --workspaces",
+    "deploy:contracts": "npm run deploy --workspace=contracts"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
