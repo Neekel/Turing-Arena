@@ -51,7 +51,11 @@ export default function Home() {
   const [revealResults, setRevealResults] = useState<any[]>([]);
   const [currentRoundId, setCurrentRoundId] = useState<number | null>(null);
 
-  const { isConnected, lastMessage } = useWebSocket("ws://localhost:4000");
+  // Get API URL from environment variable
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const WS_URL = API_URL.replace('https://', 'wss://').replace('http://', 'ws://');
+
+  const { isConnected, lastMessage } = useWebSocket(WS_URL);
   const { chain } = useAccount();
   const { toasts, removeToast, success, error, warning, info } = useToast();
   
@@ -61,7 +65,7 @@ export default function Home() {
   useEffect(() => {
     const checkActiveRound = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/rounds/active/current");
+        const response = await fetch(`${API_URL}/api/rounds/active/current`);
         const data = await response.json();
         if (data.round) {
           console.log("Active round found:", data.round);
@@ -110,7 +114,7 @@ export default function Home() {
   const handleStartRound = async () => {
     try {
       info("Starting new round...");
-      const response = await fetch("http://localhost:4000/api/rounds/start", {
+      const response = await fetch(`${API_URL}/api/rounds/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ duration: 120 }),
@@ -138,7 +142,7 @@ export default function Home() {
     if (!currentRoundId) return;
     
     try {
-      const response = await fetch(`http://localhost:4000/api/rounds/${currentRoundId}/reveal`, {
+      const response = await fetch(`${API_URL}/api/rounds/${currentRoundId}/reveal`, {
         method: "POST",
       });
       const data = await response.json();
