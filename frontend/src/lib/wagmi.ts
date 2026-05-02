@@ -1,4 +1,3 @@
-import { getDefaultConfig } from "@rainbow-me/rainbowkit";
 import { mantle } from "wagmi/chains";
 import { defineChain } from "viem";
 import { http, createConfig, fallback } from "wagmi";
@@ -32,6 +31,9 @@ export const mantleSepolia = defineChain({
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || "5144e91fa1dcd002e78fcc8d6c8df3e9";
 
+// Check if we're in browser environment
+const isBrowser = typeof window !== 'undefined';
+
 // Multiple RPC endpoints for fallback
 const mantleSepoliaTransport = fallback([
   http("https://rpc.ankr.com/mantle_sepolia", {
@@ -56,12 +58,12 @@ export const config = createConfig({
       timeout: 30000,
     }),
   },
-  connectors: [
+  connectors: isBrowser ? [
     injected(),
     walletConnect({
       projectId,
       showQrModal: true,
     }),
-  ],
+  ] : [],
   ssr: true,
 });
